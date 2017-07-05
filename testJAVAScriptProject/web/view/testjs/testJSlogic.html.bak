@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/test.js"]></script>
+    <script type="text/javascript">
+		 onload = function(){
+			//testFunc1();
+		 }
+    </script>
+	<style type="text/css">
+		div {
+			width : 400px;
+			height : 100px;
+			border : 2px solid blue;
+			background : #ccffff;
+		}
+	</style>
+ </head>
+ <body>
+  <h1>자바스크립트 변수, 자료형, 연산자 테스트</h1>
+  <h3><ol>
+	<li>문서가 로딩이 완료되면 자동으로 경고창 출력하기 : typeof(값) => 자료형이 무엇인지 확인할 수 있음</li>
+	<li>자바스크립트에서 제공하는 다이얼로그 확인</li>
+	<ul>
+		<li>메세지와 확인 버튼을 제공하는 alert 창 : <input type="button" value="확인" onclick="showAlert();"></li>
+		<li>메세지와 확인, 취소 버튼을 제공하는 confirm 창 : <input type="button" value="확인" onclick="showConfirm();"></li>
+		<li>메세지와 텍스트 필드, 확인, 취소 버튼을 제공하는 prompt 창 : <input type="button" value="확인" onclick="showPrompt();"></li>
+		<div id="box1">	
+		</div>
+	</ul>
+	<li>입력양식 input 태그를 통한 입력방법 : <input type="button" value="계산확인" onclick="calculator()"></li>
+	<input type="text" id="num1" placeholder="숫자를 입력하세요"> + <input type="text" id="num2" placeholder="숫자를 입력하세요"> = <input type="text" id="result" readonly><br>
+	<li>자바스크립트 간단 계산기 : 문자열을 숫자로 바꾸기</li>
+	첫번째 값 : <input type="text" id="value1" placeholder="숫자를 입력하세요"><br>
+	두번째 값 : <input type="text" id="value2" placeholder="숫자를 입력하세요"><br>
+	<input type="button" value="+" onclick="calculator2('+')">&nbsp; &nbsp;
+	<input type="button" value="-" onclick="calculator2('-')">&nbsp; &nbsp;
+	<input type="button" value="*" onclick="calculator2('*')">&nbsp; &nbsp;
+	<input type="button" value="/" onclick="calculator2('/')">&nbsp; &nbsp;
+	<input type="button" value="%" onclick="calculator2('%')">&nbsp; &nbsp;<br>
+	계산결과 <div id="box2"></div>
+	<li>비교연산자 : === 와 !== 연산자 확인 (값과 자료형 둘다 같은지 확인할 때 사용함) <input type="button" value="확인" onclick="check()"></li>
+	<li>switch문 case에 조건식 사용 가능함 : <input type="button" value="확인" onclick="checkSwitch()"></li>
+	<li></li>
+	<li></li>
+	<li></li>
+  </ol></h3>
+ </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>출력방법</title>
+ </head>
+ <body>
+  <h1>자바스크립트에서 출력하는 방법</h1>
+  <h3><ol>
+	<li>개발자도구 console 뷰에 출력하기</li>
+	<script type="text/javascript">
+		console.log("콘솔 뷰에 바로 출력하기 확인");
+	</script>
+	<li onclick="showAlert();">window 객체의 alert() 메소드를 사용해서 출력하기 : 클릭확인</li>
+	<script type="text/javascript">
+		function showAlert() {
+			alert("alert() 를 사용한 출력 확인");
+		}
+	</script>
+	<li>document 객체의 write() 또는 writeln() 메소드 사용하기</li>
+	<script type="text/javascript">
+		document.write("<font color='red'>웹문서에 직접 출력하기 확인.</font><br>");
+	</script>
+	<li onclick="testInnerHTML();">태그에 innerHTML 자바스크립트 속성 사용해서 출력하기 : 클릭확인</li>
+	<script type="text/javascript">
+		function testInnerHTML() {
+			document.body.innerHTML += "글자 추가하기 ";
+		}
+	</script>
+  </ol></h3>
+  
+ </body>
+</html>

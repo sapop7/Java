@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+    <title>값입력</title>
+	<script type="text/javascript">
+		//window.onload = testConfirm();
+//		window.onload = function() {
+//			testConfirm();
+//		}
+	</script>
+	<style type="text/css">
+		#box {
+			width: 300px;
+			height: 100px;
+			border: 3px solid red;
+			background-color: pink;
+		}
+	</style>
+ </head>
+ <body>
+  <h1>자바스크립트로 값 입력 받기</h1>
+  <h3><ol>
+	<li onclick="testConfirm();">window.confrim()로 true/false 값 입력받기 테스트</li>
+	<script type="text/javascript">
+			function testConfirm() {
+				var result = confirm("찬성하면 확인버튼, 반대하면 취소 버튼을 누르십시오.");
+				if(result)
+					alert("찬성하셨습니다.");
+				else
+					alert("반대하셨습니다.");
+			}
+	</script>
+	<li onclick="testPrompt();">window.prompt() 의 텍스트필드로 부터 문자열 입력받기 테스트</li>
+	<script type="text/javascript">
+		function testPrompt() {
+			var inputString = window.prompt("고향이 어딘가요?");
+			alert("고향이 " + inputString + " 이시군.....");
+		}
+	</script>
+	<li>document.getElementById() 로 태그의 정보를 읽어들이기 테스트</li>
+	<input type="text" id="nametf">&nbsp;&nbsp;
+	<button onclick="inputTfValue();">클릭하세요.</button>
+	<script type="text/javascript">
+		function inputTfValue() {
+			var inputValue = document.getElementById("nametf").value;
+			alert("입력된 값 확인 : " + inputValue);
+		}
+	</script>
+	<li>id 를 이용한 태그 정보 변경 테스트</li>
+	<button onclick="changeDiv();">div 정보 바꾸기</button>
+	<br>
+	<div id="box">
+		사랑합니다.
+	</div>
+	<script type="text/javascript">
+		//function changeDiv() {}
+		 changeDiv = function() {
+			var box = document.getElementById("box");
+			box.style.backgroundColor = "olive";
+			alert("읽어온 값 : " + box.innerHTML);
+			box.innerHTML = "고맙습니다.";
+		}
+	</script>
+	<button onclick="changeList();">4번째 li 태그 스타일 바꾸기</button>
+	
+	<script type="text/javascript">
+		changeList = function() {
+			var li = document.ElementsByTagName("li");
+			alert(li[0].innerHTML + "<br>" + 
+					li[1].innerHTML + "<br>" + 
+					li[2].innerHTML + "<br>" +  
+					li[3].innerHTML);
+			li[3].style.backgroundColor = "yellow";
+		}
+	</script>
+	<li>input 태그와 value 속성 다루기 테스트</li>
+	<input type="text" id="userName" name="성명입력" onclick="this.value='';"><br>
+	<input type="button" id="btn" value="확인하기" onclick="checkValue"(this)>
+	
+	<script type="text/javascript">
+		checkValue = function(element) {
+		 var inputText = document.getElementById("userName");
+		 var userNameValue = inputText.value;
+		inputText.size = userNameValue.length;
+	    element.value = userNameValue + "님은 이미 확인 하셨습니다.";
+		element.onclick = "";
+		}
+	</script>
+  </ol></h3>
+ </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+		function testFn() {
+			alert("testFn() 함수가 구동됨.");
+			//window가 최상위 객체이기 때문에 생략 가능
+			console.log("testFn() 함수 구동에 대한 확인용 구문");
+		}
+		</script>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<noscript>
+	이 브라우저에서는 자바스크립트가 지원되지 않습니다.
+</noscript>
+<script type="text/javascript">
+	console.log("head영역에 작성됨");
+</script>
+<script type="text/javascript" src="../js/main.js"></script>
+</head>
+<body>
+<h1>웹 문서(*.html, *.jsp)에서 javascript 사용하기</h1>
+<dl>
+	<dt>자바스크립트(JavaScript)</dt>
+	<dd>웹 브라우저에서 컴파일되어 실행되는 클라이언트 페이지용 스크립트 언어 중의 하나<br>
+	자바로 만들어진 스크립트 언어임</dd>
+	<p>
+	<dt>스크립트 언어</dt>
+	<dd>프로그래밍 언어인 자바나 C언어와 다름<br>
+	프로그래밍 언어들은 지정된 문법과 로직등을 지키면서 필요한 기능에 대해 직접 만들어 나감<br>
+	스크립트는 문법에 구에되지 않으면서 필요한 기능들을 미리 만들어서 제공하고 있음<br>
+	제공하는 기능(객체, 메소드, 함수 등)을 사용하기만 하면 됨. 사용 법만 익히면 됨.</dd>
+</dl>
+<hr>
+<h2>자바스크립트 사용 위치</h2>
+<ol>
+	<li>테크에 직접 사용할 수 있음 : on이벤트 속성을 이용함</li>
+	<h3 onclick="javascript:window.alert('클릭해서 보여진거다....');">테스트해보기</h3>
+	<h3 onclick="window.alert('클릭해서 보여진거다....22');">테스트해보기2</h3>
+	<li>자바스크립트 소스는 script 태그에 따로 작성하고, on이벤트 속성으로
+	태그에서 실행시키는 방법 : 함수(function)단위로 작성함
+	<br>script 태스는 웹문서 아무 곳이나 작성할 수 있음. 여러번 사용 가능</li>
+	<h3 onclick="testFn();">함수(function) 실행해 보기</h3>
+	<script type="text/javascript">
+		console.log("body 영역에 작성됨.");
+	</script>
+	<li>외부 자바스크립트 소스 파일(*.js) 가져다가 소스 사용하기</li>
+	<h3 onclick="testExternal()">외부파일 소스 구동 테스트 하기</h3>
+	<li></li>
+</ol>
+</body>
+</html>
