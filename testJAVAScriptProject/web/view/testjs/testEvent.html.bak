@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>event</title>
+   <script type="text/javascript">
+   <!-- 스크립트 블럭 내에서 이벤트 핸들러 제어하기 -->
+	//태그객체.on이벤트명 = function(){구동할 내용 소스 }
+	window.onload = function(){
+		//alert("문서 읽기 완료됨.");
+		var job = document.getElementById("job");
+		job.onchange = function() {
+			alert("선택 값 : " + job.value);
+		}
+	}
+   </script>
+ </head>
+ <body>
+  <h1>자바스크립트 이벤트 핸들링 테스트</h1>
+  <h3><ol>
+	<li>인라인 이벤트 핸들러 : 태그에 on이벤트 속성을 추가하고 실행할 내용을 바로 기입하는 것</li>
+	<input type="button" value="테스트해보기" onclick="alert('인라인 이벤트 핸들러 구동 확인.')">
+	<li>자바스크립트 블럭 내에서 이벤트 핸들러 사용하기</li>
+	<select id="job">
+		<option value = "office">회사원</option>
+		<option value = "programmer" selected>프로그래머</option>
+		<option value = "student">학생</option>
+	</select>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+  </ol></h3>
+ </body>
+</html>

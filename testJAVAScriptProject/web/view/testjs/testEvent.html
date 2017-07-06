@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>event</title>
+   <script type="text/javascript">
+   <!-- 스크립트 블럭 내에서 이벤트 핸들러 제어하기 -->
+	//태그객체.on이벤트명 = function(){구동할 내용 소스 }
+	window.onload = function(){
+		//alert("문서 읽기 완료됨.");
+		var job = document.getElementById("job");
+		job.onchange = function() {
+			alert("선택 값 : " + job.value);
+		}
+
+		var btn = document.getElementById("btn");
+		btn.onclick = function(event){
+			console.log(event.target);
+			console.log(event.x);
+			console.log(event.y);
+			console.log(event.target.offsetLeft);
+			console.log(event.target.offsetTop);
+		}
+		
+	
+			var list = document.getElementsByName("list");
+			var nation = document.getElementById("nation");
+			nation.onchange = function (){
+				list[0].style.backgroundColor = "";
+				list[1].style.backgroundColor = "";
+				list[2].style.backgroundColor = "";
+				list[3].style.backgroundColor = "";
+				list[this.value].style.backgroundColor = "yellow";
+			}
+	}
+   </script>
+ </head>
+ <body>
+  <h1>자바스크립트 이벤트 핸들링 테스트</h1>
+  <h3><ol>
+	<li>인라인 이벤트 핸들러 : 태그에 on이벤트 속성을 추가하고 실행할 내용을 바로 기입하는 것</li>
+	<input type="button" value="테스트해보기" onclick="alert('인라인 이벤트 핸들러 구동 확인.')">
+	<li>자바스크립트 블럭 내에서 이벤트 핸들러 사용하기</li>
+	<select id="job">
+		<option value = "office">회사원</option>
+		<option value = "programmer" selected>프로그래머</option>
+		<option value = "student">학생</option>
+	</select>
+	<li>이벤트 객체가 가진 정보 확인하기</li>
+	<button id="btn">확인하기</button>
+	<li>이벤트 발생 함수 호출 예제</li>
+	<select id="nation">
+		<option value="">번호를 선택하세요</option>
+		<option value="0">No.0</option>
+		<option value="1">No.1</option>
+		<option value="2">No.2</option>
+		<option value="3">No.3</option>		
+	</select>
+	<ul>
+		<li name="list">Korea</li>
+		<li name="list">Japan</li>
+		<li name="list">China</li>
+		<li name="list">Betnam</li>
+	</ul>
+	
+	<li></li>
+	<li></li>
+  </ol></h3>
+ </body>
+</html>

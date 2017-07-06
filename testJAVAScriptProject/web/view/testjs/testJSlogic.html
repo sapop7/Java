@@ -7,6 +7,47 @@
     <script type="text/javascript">
 		 onload = function(){
 			//testFunc1();
+			//태그대상.on이벤트명 = function(){}
+			var btn7 = document.getElementById("btn7");
+			btn7.onclick = function(){
+				document.getElementById("box7").innerHTML = "계산 결과 : " + sum(55, 66);
+			};
+
+			document.getElementById("addDiv").onclick = function(){
+					var ref = new MkDiv();
+					var divTag = ref.make("box99", "300", "50", "red");
+					document.body.appendChild(divTag);
+			};
+
+			document.getElementById("objectTest").onclick = function(){
+					var ref = new MkDiv();
+					var colors = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+					for(var i = 0; i < colors.length; i++){
+						var divTag = ref.make("b" + i, 50, 200, colors[i]);
+						divTag.style.float = "left";
+						document.body.appendChild(divTag);
+					}
+			};
+		 }
+
+		 //객체 만들기 (자바의 생성자 만들기와 비슷함)
+		 function MkDiv() {
+			this.element = null;	//멤버 변수(속성)
+			this.make = function(id, w, h, c) { //멤버 함수 (메소드)
+				this.element = document.createElement("div");
+				this.element.id = id;
+				this.element.style.width = w  + "px";
+				this.element.style.height = h + "px";
+				this.element.style.backgroundColor = c;
+				console.log(this);
+				return this.element;
+			}
+		 }
+
+		 
+
+		 function sum(x, y){
+			return x + y;
 		 }
     </script>
 	<style type="text/css">
@@ -44,8 +85,115 @@
 	<li>비교연산자 : === 와 !== 연산자 확인 (값과 자료형 둘다 같은지 확인할 때 사용함) <input type="button" value="확인" onclick="check()"></li>
 	<li>switch문 case에 조건식 사용 가능함 : <input type="button" value="확인" onclick="checkSwitch()"></li>
 	<li>짧은 조건문 사용 테스트 : boolean 값 논리연산자 실행 : <input type="button" value="확인" onclick="checkLogic()"></li>
-	<li></li>
-	<li></li>
+	<li>자바스크립트 변수 : 지역변수와 전역변수(멤버변수 : window 객체의 멤버가 됨)</li>
+	<ul>
+		<li>지역변수 : var 변수명; 으로 선언한 변수</li>
+		<script type="text/javascript">
+			var name; //지역변수라고 했지만 함수 {} 밖에서는 전역변수가 됨
+			//초기화(초기값 기록) 하지 않으면 null 이 됨
+			console.log(name.aaa); // error
+		</script>
+		<li>전역(멤버) 변수 : 변수명; 으로 선언한 변수 (var 붙이지 않음)</li>
+	<script type="text/javascript">
+		var name = "홍길동"; //지역변수
+        grade = 'A'; //전역변수 : window 객체의 멤버가 됨
+		//window.grade == this.grade == grade
+
+		console.log("지역변수 name : " + name +", "+ window.name +", "+ this.name);
+
+		console.log("전역변수 grade : " + grade + ", " + window.grade + ", " + this.grade);
+	</script>
+	<script type="text/javascript">
+		console.log("지역변수 name : " + name +", "+ window.name +", "+ this.name);
+
+		console.log("전역변수 grade : " + grade + ", " + window.grade + ", " + this.grade);
+
+		function testVarFn() {
+			var school = "My School"; // 지역변수
+			school2 = "Your School";  // 전역변수
+			console.log(school + ", " + school.length);
+			console.log(window.school2 + ", " + school2.length);
+		}
+
+		testVarFn(); // 함수 실행시킴
+		console.log("함수 밖에서 : " + school2); //전역
+		console.log("함수 밖에서 : " + school);	// 지역
+	</script>
+	</ul>
+	<li>문자열과 숫자의 결합 : 문자열 + 숫자, 숫자 + 문자열</li>
+	<script type="text/javascript">
+		var value1 = "javascript";
+		var value2 = 200;
+		var value3 = 5;
+		
+		console.log(value1 + value2 + value3);
+		console.log(value2 + value3 + value1);
+	</script>
+	<li>배열의 선언과 값 기록, 사용 : Array 객체 사용</li>
+	<script type="text/javascript">
+		var arr1 = new Array(5);
+		var arr2 = new Array("오징어", "꼴뚜기", "대구", "명태", "거북이");
+		var arr3 = new Array();
+		
+		for(var i = 0; i < arr1.length; i++){
+			arr1[i] = (i + 1) * 100;
+			arr3.push((i + 1) * 10); 
+		}
+		
+		for (var i = 0; i< arr1.length; i++){
+			document.write("arr1["+ i + "] = " + arr1[i] + ", ")
+			document.write("arr2["+ i + "] = " + arr2[i] + ", ")
+			document.write("arr3.pop["+ i + "] = " + arr3.pop() + ", ")
+			
+		}
+			
+	</script>
+	<li>배열의 초기화 방법 </li>
+	<script type="text/javascript">
+		var arr1 = new Array("apple", "banana", "melon", "grape", "orange");
+		var arr2 = [11, 22, 33, 44, 55, 66];
+		var liTags = document.getElementsByTagName("li");
+		
+		console.log(arr1.length + ", " + arr1);
+		console.log(arr2.length + ", " + arr2);
+		console.log(liTags.length + ", " + liTags);
+		
+	</script>
+	<li>for in 문 테스트</li>
+	<h3>목록 자동 추가하기 테스트 <input type="button" value="실행" onclick="addList()"></h3>
+	<ul id="u"></ul>
+	<script type="text/javascript">
+	 	function addList() {
+	 		var arr1 = new Array("apple", "banana", "melon", "grape", "orange");
+			
+			var ul = document.getElementById("u");
+	 		for(var i in arr1){
+				var li = document.createElement("li");
+				li.innerHTML = arr1[i];
+				ul.appendChild(li);
+			}
+	 	}
+	</script>
+	<li>익명 함수 테스트 <input type="button" value="실행" onclick="testAnonymus()"></li>
+	<script type="text/javascript">
+		//function testAnonymus(){}
+		testAnonymus = function () {
+			alert("익명 함수 구동 확인함.");
+		}
+	</script>
+	<li>스스로 실행되는 함수 테스트</li>
+	<script type="text/javascript">
+		//함수명();
+		(function(){
+			alert("스스로 실행이 되었습니다.");
+		})();
+	</script>
+	<li>함수 매개변수와 전달인자, 리턴 처리 테스트<br><input type="button" id ="btn7" value="함수테스트"></li>
+	<div id="box7"></div>
+	<li>객체를 만들고 작성된 메소드로 div 추가하기 <input type="button" id ="addDiv" value="div 추가하기"></li>
+	<li>MkDiv 객체 활용 테스트<input type="button" id="objectTest" value="스펙트럼 만들기"></li>
   </ol></h3>
+  <!-- MkDiv() 객체에 의해 div 태그가 아래에 추가될 것임 -->
+
  </body>
 </html>
